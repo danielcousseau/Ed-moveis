@@ -1,0 +1,123 @@
+(function (namespace) {
+    'use strict';
+
+    var filtroAtivo = 'all';
+
+    var PINTEREST = {
+        all:        'https://www.pinterest.com/search/pins/?q=moveis+sob+medida+mdf',
+        cozinha:    'https://www.pinterest.com/search/pins/?q=cozinha+sob+medida+mdf',
+        quarto:     'https://www.pinterest.com/search/pins/?q=quarto+sob+medida+mdf',
+        banheiro:   'https://www.pinterest.com/search/pins/?q=banheiro+sob+medida+mdf',
+        sala:       'https://www.pinterest.com/search/pins/?q=sala+sob+medida+mdf',
+        escritorio: 'https://www.pinterest.com/search/pins/?q=home+office+sob+medida+mdf',
+        comercial:  'https://www.pinterest.com/search/pins/?q=moveis+comerciais+sob+medida'
+    };
+
+    var LABELS = {
+        all:        'Todos os Ambientes',
+        cozinha:    'Cozinha',
+        quarto:     'Quarto',
+        banheiro:   'Banheiro',
+        sala:       'Sala',
+        escritorio: 'Escritório',
+        comercial:  'Comercial'
+    };
+
+    function criarItemGaleria(item) {
+        // A API retorna categoria como objeto { id, nome, slug }
+        var slug         = item.categoria ? item.categoria.slug : '';
+        var nomeCategoria = item.categoria ? item.categoria.nome : '';
+        var urlPinterest = PINTEREST[slug] || PINTEREST['all'];
+
+        return (
+            '<article class="gallery-item reveal" data-category="' + slug + '">' +
+            '  <div class="gallery-img">' +
+            '    <img src="' + item.imagem + '" alt="' + item.alt + '" loading="lazy">' +
+            '  </div>' +
+            '  <div class="gallery-info">' +
+            '    <span class="tag">' + nomeCategoria + '</span>' +
+            '    <h3>' + item.titulo + '</h3>' +
+            '    <p>' + item.descricao + '</p>' +
+            '    <a class="card-pinterest" href="' + urlPinterest + '" target="_blank" rel="noopener">' +
+            '      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>' +
+            '      Ver mais no Pinterest' +
+            '    </a>' +
+            '  </div>' +
+            '</article>'
+        );
+    }
+
+    function atualizarBotaoPinterest(filtro) {
+        var hint = document.getElementById('pinterest-hint');
+        if (!hint) return;
+        var link = hint.querySelector('.pinterest-link');
+        link.href = PINTEREST[filtro] || PINTEREST['all'];
+        link.querySelector('.pinterest-label').textContent = LABELS[filtro] || 'Móveis';
+        hint.hidden = false;
+    }
+
+    function aplicarFiltro(filtro) {
+        filtroAtivo = filtro;
+        document.querySelectorAll('.gallery-item').forEach(function (item) {
+            var visivel = filtroAtivo === 'all' || item.dataset.category === filtroAtivo;
+            item.classList.toggle('is-hidden', !visivel);
+        });
+        atualizarBotaoPinterest(filtro);
+    }
+
+    function iniciarFiltros() {
+        var botoes = document.querySelectorAll('.filter-btn');
+        botoes.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                botoes.forEach(function (b) {
+                    b.classList.remove('is-active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                btn.classList.add('is-active');
+                btn.setAttribute('aria-selected', 'true');
+                aplicarFiltro(btn.dataset.filter);
+            });
+        });
+    }
+
+    function mostrarErro() {
+        var container = document.getElementById('gallery');
+        if (container) {
+            container.innerHTML =
+                '<p style="grid-column:1/-1;text-align:center;color:#999;padding:2rem">' +
+                'Nenhum projeto encontrado. Adicione projetos pelo painel de administração.' +
+                '</p>';
+        }
+    }
+
+    function renderizarGaleria(itens) {
+        var container = document.getElementById('gallery');
+        if (!container) return;
+
+        if (!itens || itens.length === 0) {
+            mostrarErro();
+            return;
+        }
+
+        container.innerHTML = itens.map(criarItemGaleria).join('');
+        if (filtroAtivo !== 'all') aplicarFiltro(filtroAtivo);
+    }
+
+    function iniciarGaleria() {
+        iniciarFiltros();
+        atualizarBotaoPinterest('all');
+
+        // Busca projetos da API
+        fetch('/api/galeria')
+            .then(function (res) { return res.json(); })
+            .then(function (resposta) {
+                renderizarGaleria(resposta.data);
+            })
+            .catch(function () {
+                mostrarErro();
+            });
+    }
+
+    namespace.iniciarGaleria = iniciarGaleria;
+
+}(window.EdMoveis = window.EdMoveis || {}));

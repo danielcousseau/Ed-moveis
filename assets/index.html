@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ed Móveis — Marcenaria especializada em móveis sob medida em MDF. Projetos personalizados para cozinhas, dormitórios, banheiros, escritórios e mais.">
+    <title>Ed Móveis — Marcenaria & Móveis Sob Medida em MDF</title>
+
+    <!-- Fontes Google: Fraunces (display serifada) + Manrope (corpo sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Folha de estilos principal -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- =============================== -->
+    <!-- CABEÇALHO / MENU FIXO            -->
+    <!-- =============================== -->
+    <header class="site-header" id="siteHeader">
+        <div class="container header-inner">
+            <!-- Logotipo / nome da marca -->
+            <a href="#inicio" class="brand" aria-label="Ed Móveis — início">
+                <img src="images/logo.png" alt="Ed Móveis — Móveis Sob Medida" class="brand-logo">
+            </a>
+
+            <!-- Botão hamburger (mobile) -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navegação principal -->
+            <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#ideias">Ideias</a></li>
+                    <li><a href="#antes-depois">Antes &amp; Depois</a></li>
+                    <li><a href="#videos">Vídeos</a></li>
+                    <li><a href="#diferenciais">Diferenciais</a></li>
+                    <li><a href="#orcamento">Orçamento</a></li>
+                    <li>
+                        <a class="btn btn-sm btn-primary nav-cta"
+                           href="https://wa.me/555196387303?text=Olá!%20Gostaria%20de%20um%20orçamento."
+                           target="_blank" rel="noopener">
+                            Orçamento
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- =============================== -->
+    <!-- HERO / BANNER PRINCIPAL          -->
+    <!-- =============================== -->
+    <section class="hero" id="inicio">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="container hero-inner">
+
+            <div class="hero-content reveal">
+                <span class="eyebrow">Marcenaria sob medida — Montenegro, RS</span>
+                <h1 class="hero-title">
+                    Móveis sob medida <em></em>,<br>
+                    pensados para a sua vida.
+                </h1>
+                <p class="hero-lead">
+                    Projetos em MDF de alta densidade, acabamento impecável e
+                    aproveitamento inteligente de cada centímetro do seu espaço.
+                </p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary btn-lg"
+                       href="https://wa.me/555196387303?text=Olá!%20Gostaria%20de%20um%20orçamento%20de%20móveis%20sob%20medida."
+                       target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/>
+                        </svg>
+                        Pedir orçamento no WhatsApp
+                    </a>
+                    <a class="btn btn-ghost btn-lg" href="#ideias">Ver projetos →</a>
+                </div>
+
+                <!-- Provas sociais rápidas -->
+                <ul class="hero-meta" role="list">
+                    <li><strong>+80</strong><span>projetos entregues</span></li>
+                    <li><strong>8 anos</strong><span>de marcenaria</span></li>
+                    <li><strong>5★</strong><span>avaliação dos clientes</span></li>
+                </ul>
+            </div>
+
+            <!-- Imagem destaque -->
+            <div class="hero-visual reveal">
+                <div class="hero-img-wrap">
+                    <!-- Substitua por sua imagem: hero-cozinha.jpg -->
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80&auto=format&fit=crop"
+                         alt="Cozinha sob medida em MDF com acabamento moderno" loading="eager">
+                    <div class="hero-img-tag">
+                        <span class="dot"></span>Projeto Itacorubi · 2024
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marquise decorativa inferior -->
+        <div class="hero-marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <span>MDF de alta densidade</span><span>•</span>
+                <span>Projeto 3D gratuito</span><span>•</span>
+                <span>Acabamento sob medida</span><span>•</span>
+                <span>Garantia de fábrica</span><span>•</span>
+                <span>Atendimento direto com o marceneiro</span><span>•</span>
+                <span>MDF de alta densidade</span><span>•</span>
+                <span>Projeto 3D gratuito</span><span>•</span>
+                <span>Acabamento sob medida</span><span>•</span>
+                <span>Garantia de fábrica</span><span>•</span>
+                <span>Atendimento direto com o marceneiro</span><span>•</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================== -->
+    <!-- SOBRE A MARCENARIA               -->
+    <!-- =============================== -->
+    <section class="section section-sobre" id="sobre">
+        <div class="container grid-2">
+
+            <div class="sobre-media reveal">
+                <!-- Substitua por sua imagem: oficina.jpg -->
+                <img class="img-main"
+                     src="https://images.unsplash.com/photo-1601058268499-e52658b8bb88?w=800&q=80&auto=format&fit=crop"
+                     alt="Oficina de marcenaria com marceneiro trabalhando" loading="lazy">
+                <!-- Substitua por sua imagem: detalhe-mdf.jpg -->
+                <img class="img-stack"
+                     src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=500&q=80&auto=format&fit=crop"
+                     alt="Detalhe de acabamento em MDF" loading="lazy">
+                <div class="sobre-badge">
+                    <span class="badge-num">8</span>
+                    <span class="badge-text">anos transformando<br>espaços</span>
+                </div>
+            </div>
+
+            <div class="sobre-content reveal">
+                <span class="eyebrow">Sobre a Ed Móveis</span>
+                <h2 class="section-title">
+                    Marcenaria artesanal com a <em>precisão</em> de quem ama o que faz.
+                </h2>
+                <p>
+                    A Ed Móveis é a marcenaria de Ednilson Cousseau, em Montenegro, RS.
+                    Especializados em <strong>móveis sob medida em MDF</strong>, nosso trabalho
+                    é pensado para tirar o máximo de cada ambiente — aproveitando cada canto,
+                    cada vão, cada centímetro do seu espaço.
+                </p>
+                <p>
+                    Cada peça nasce de um projeto exclusivo, desenvolvido junto com o cliente,
+                    e é executada com ferramentas profissionais e atenção total ao acabamento —
+                    fita de borda perfeita, encaixes precisos e o capricho de quem faz
+                    marcenaria de verdade.
+                </p>
+                <ul class="check-list">
+                    <li>Atendimento personalizado do projeto à montagem</li>
+                    <li>MDF de fornecedores certificados (Eucatex, Duratex, Arauco)</li>
+                    <li>Foco em acabamento e qualidade dos materiais</li>
+                    <li>Visita técnica e projeto sem custo</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================== -->
+    <!-- SERVIÇOS                         -->
+    <!-- =============================== -->
+    <section class="section section-servicos" id="servicos">
+        <div class="container">
+
+            <header class="section-head reveal">
+                <span class="eyebrow">O que fazemos</span>
+                <h2 class="section-title">Soluções sob medida para <em>cada ambiente</em>.</h2>
+                <p class="section-sub">
+                    Do canto mais simples ao projeto mais sofisticado: desenhamos, fabricamos
+                    e instalamos com o mesmo cuidado.
+                </p>
+            </header>
+
+            <div class="services-grid">
+
+                <!-- Cards renderizados dinamicamente por assets/js/servicos.js -->
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================== -->
+    <!-- IDEIAS PARA SEU PROJETO          -->
+    <!-- =============================== -->
+    <section class="section section-ideias" id="ideias">
+        <div class="container">
+
+            <header class="section-head reveal">
+                <span class="eyebrow">Inspire-se</span>
+                <h2 class="section-title">Ideias para o seu <em>próximo projeto</em>.</h2>
+                <p class="section-sub">
+                    Filtre por ambiente e descubra possibilidades. Cada projeto é exclusivo —
+                    use estas referências como ponto de partida.
+                </p>
+            </header>
+
+            <!-- Filtros da galeria -->
+            <div class="filters reveal" role="tablist" aria-label="Filtrar galeria por ambiente">
+                <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">Todos</button>
+                <button class="filter-btn" data-filter="cozinha" role="tab">Cozinha</button>
+                <button class="filter-btn" data-filter="quarto" role="tab">Quarto</button>
+                <button class="filter-btn" data-filter="banheiro" role="tab">Banheiro</button>
+                <button class="filter-btn" data-filter="sala" role="tab">Sala</button>
+                <button class="filter-btn" data-filter="escritorio" role="tab">Escritório</button>
+                <button class="filter-btn" data-filter="comercial" role="tab">Comercial</button>
+            </div>
+
+            <!-- Dica de Pinterest — aparece ao selecionar uma categoria -->
+            <div id="pinterest-hint" hidden>
+                <a class="pinterest-link" href="#" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                        <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+                    </svg>
+                    Ver mais ideias de <strong class="pinterest-label"></strong> no Pinterest
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                        <path d="M5 12h14M13 6l6 6-6 6"/>
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Itens renderizados dinamicamente por assets/js/galeria.js -->
+            <div class="gallery" id="gallery"></div>
+        </div>
+    </section>
+
+
+    <!-- =============================== -->
+    <!-- ANTES E DEPOIS                   -->
+    <!-- =============================== -->
+    <section class="section section-antes-depois" id="antes-depois">
+        <div class="container">
+
+            <header class="section-head reveal">
+                <span class="eyebrow">Transformações reais</span>
+                <h2 class="section-title">Antes &amp; Depois</h2>
+                <p class="section-sub">
+                    Veja como um bom projeto muda completamente um ambiente.
+                </p>
+            </header>
+
+            <div class="ad-grid">
+
+                <article class="ad-card reveal">
+                    <div class="ad-pair">
+                        <figure class="ad-figure">
+                            <span class="ad-label ad-label--before">Antes</span>
+                            <img src="https://images.unsplash.com/photo-1556909043-f0f3b2d8e6c3?w=600&q=80&auto=format&fit=crop"
+                                 alt="Cozinha antes da reforma" loading="lazy">
+                        </figure>
+                        <figure class="ad-figure">
+                            <span class="ad-label ad-label--after">Depois</span>
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80&auto=format&fit=crop"
+                                 alt="Cozinha depois da reforma" loading="lazy">
+                        </figure>
+                    </div>
+                    <div class="ad-info">
+                        <h3>Cozinha do casal Silva</h3>
+                        <p>Substituímos os armários soltos por um conjunto sob medida com torre quente, despensa e ilha.</p>
+                    </div>
+                </article>
+
+                <article class="ad-card reveal">
+                    <div class="ad-pair">
+                        <figure class="ad-figure">
+                            <span class="ad-label ad-label--before">Antes</span>
+                            <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&q=80&auto=format&fit=crop"
+                                 alt="Quarto vazio antes" loading="lazy">
+                        </figure>
+                        <figure class="ad-figure">
+                            <span class="ad-label ad-label--after">Depois</span>
+                            <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80&auto=format&fit=crop"
+                                 alt="Quarto reformado depois" loading="lazy">
+                        </figure>
+                    </div>
+                    <div class="ad-info">
+                        <h3>Suíte apartamento Trindade</h3>
+                        <p>Cabeceira ripada, criados suspensos e closet aberto em apenas 12 m².</p>
+                    </div>
+                </article>
+
+                <article class="ad-card reveal">
+                    <div class="ad-pair">
+                        <figure class="ad-figure">
+                            <span class="ad-label ad-label--before">Antes</span>
+                            <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&q=80&auto=format&fit=crop"
+                                 alt="Sala antes" loading="lazy">
+                        </figure>
+                        <figure class="ad-figure">
+                            <span class="ad-label ad-label--after">Depois</span>
+                            <img src="https://images.unsplash.com/photo-1567016376408-0226e4d0c1ea?w=600&q=80&auto=format&fit=crop"
+                                 alt="Sala depois com painel" loading="lazy">
+                        </figure>
+                    </div>
+                    <div class="ad-info">
+                        <h3>Sala de estar — Família Costa</h3>
+                        <p>Painel ripado integrado à estante, escondendo cabos e valorizando a TV.</p>
+                    </div>
+                </article>
+
+                <article class="ad-card reveal">
+                    <div class="ad-pair">
+                        <figure class="ad-figure">
+                            <span class="ad-label ad-label--before">Antes</span>
+                            <img src="https://images.unsplash.com/photo-1556909114-44e3e9399a2e?w=600&q=80&auto=format&fit=crop"
+                                 alt="Escritório antes" loading="lazy">
+                        </figure>
+                        <figure class="ad-figure">
+                            <span class="ad-label ad-label--after">Depois</span>
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&auto=format&fit=crop"
+                                 alt="Escritório depois com home office" loading="lazy">
+                        </figure>
+                    </div>
+                    <div class="ad-info">
+                        <h3>Home office — Ana &amp; Bruno</h3>
+                        <p>Cantinho improvisado virou estação completa com mesa em L e nichos.</p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================== -->
+    <!-- VÍDEOS                           -->
+    <!-- =============================== -->
+    <section class="section section-videos" id="videos">
+        <div class="container">
+
+            <header class="section-head reveal">
+                <span class="eyebrow">Acompanhe nossa rotina</span>
+                <h2 class="section-title">Vídeos de <em>projetos &amp; bastidores</em>.</h2>
+                <p class="section-sub">
+                    Da prancheta à instalação: o passo a passo da nossa marcenaria.
+                </p>
+            </header>
+
+            <div class="video-grid">
+
+                <!-- Cards de vídeo. Clique abre o iframe do YouTube. -->
+                <article class="video-card reveal" data-video-id="dQw4w9WgXcQ">
+                    <div class="video-thumb">
+                        <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=700&q=80&auto=format&fit=crop"
+                             alt="Vídeo: montagem de cozinha sob medida" loading="lazy">
+                        <button class="play-btn" aria-label="Reproduzir vídeo de montagem">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="video-info">
+                        <span class="tag">Montagem</span>
+                        <h3>Montagem de cozinha em 90 segundos</h3>
+                        <p>Time-lapse da instalação completa de uma cozinha sob medida.</p>
+                    </div>
+                </article>
+
+                <article class="video-card reveal" data-video-id="dQw4w9WgXcQ">
+                    <div class="video-thumb">
+                        <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=700&q=80&auto=format&fit=crop"
+                             alt="Vídeo: detalhes de acabamento" loading="lazy">
+                        <button class="play-btn" aria-label="Reproduzir vídeo de acabamento">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="video-info">
+                        <span class="tag">Acabamento</span>
+                        <h3>O segredo do acabamento perfeito</h3>
+                        <p>Fita de borda, lixamento e ajuste fino — o que faz a diferença.</p>
+                    </div>
+                </article>
+
+                <article class="video-card reveal" data-video-id="dQw4w9WgXcQ">
+                    <div class="video-thumb">
+                        <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=700&q=80&auto=format&fit=crop"
+                             alt="Vídeo: projeto finalizado" loading="lazy">
+                        <button class="play-btn" aria-label="Reproduzir vídeo de projeto finalizado">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="video-info">
+                        <span class="tag">Projeto pronto</span>
+                        <h3>Tour pelo dormitório finalizado</h3>
+                        <p>Walkthrough de uma suíte master entregue em 2024.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================== -->
+    <!-- DIFERENCIAIS                     -->
+    <!-- =============================== -->
+    <section class="section section-diferenciais" id="diferenciais">
+        <div class="container">
+
+            <header class="section-head reveal">
+                <span class="eyebrow">Por que escolher a Ed Móveis</span>
+                <h2 class="section-title">Diferenciais que <em>fazem diferença</em>.</h2>
+            </header>
+
+            <div class="dif-grid">
+                <article class="dif-card reveal">
+                    <span class="dif-num">01</span>
+                    <h3>Projeto sob medida</h3>
+                    <p>Cada milímetro é desenhado pensando no seu espaço, sua rotina e seu estilo de vida.</p>
+                </article>
+
+                <article class="dif-card reveal">
+                    <span class="dif-num">02</span>
+                    <h3>Aproveitamento de espaço</h3>
+                    <p>Aproveitamos cantos, alturas e vãos que móveis prontos simplesmente desperdiçam.</p>
+                </article>
+
+                <article class="dif-card reveal">
+                    <span class="dif-num">03</span>
+                    <h3>MDF de alta qualidade</h3>
+                    <p>Trabalhamos apenas com MDF de fornecedores certificados, com BP, fosco ou laca premium.</p>
+                </article>
+
+                <article class="dif-card reveal">
+                    <span class="dif-num">04</span>
+                    <h3>Acabamento profissional</h3>
+                    <p>Fita de borda perfeita, ferragens de primeira linha e instalação feita por marceneiros experientes.</p>
+                </article>
+
+                <article class="dif-card reveal">
+                    <span class="dif-num">05</span>
+                    <h3>Atendimento direto</h3>
+                    <p>Você fala com o marceneiro do começo ao fim — sem vendedor intermediário, sem ruído.</p>
+                </article>
+
+                <article class="dif-card reveal">
+                    <span class="dif-num">06</span>
+                    <h3>Orçamento personalizado</h3>
+                    <p>Visita técnica gratuita, projeto 3D realista e orçamento detalhado item por item.</p>
+                </article>
+            </div>
+
+            <!-- CTA final -->
+            <div class="dif-cta reveal">
+                <h3>Pronto para tirar seu projeto do papel?</h3>
+                <p>Faça um orçamento sem compromisso pelo WhatsApp.</p>
+                <a class="btn btn-primary btn-lg"
+                   href="https://wa.me/555196387303?text=Olá!%20Gostaria%20de%20um%20orçamento."
+                   target="_blank" rel="noopener">
+                    Falar com a Ed Móveis
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =============================== -->
+    <!-- FORMULÁRIO DE ORÇAMENTO          -->
+    <!-- =============================== -->
+    <section class="section section-orcamento" id="orcamento">
+        <div class="container">
+
+            <header class="section-head reveal">
+                <span class="eyebrow">Sem compromisso</span>
+                <h2 class="section-title">Peça seu <em>orçamento</em>.</h2>
+                <p class="section-sub">
+                    Preencha o formulário e entraremos em contato em até 24 horas.
+                </p>
+            </header>
+
+            <form class="orcamento-form reveal" id="orcamentoForm" novalidate>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome completo</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefone">WhatsApp / Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(51) 99999-9999" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ambiente">Ambiente desejado</label>
+                        <select id="ambiente" name="ambiente" required>
+                            <option value="">Selecione...</option>
+                            <option value="Cozinha">Cozinha</option>
+                            <option value="Quarto">Quarto</option>
+                            <option value="Banheiro">Banheiro</option>
+                            <option value="Sala">Sala</option>
+                            <option value="Escritório">Escritório</option>
+                            <option value="Área de serviço">Área de serviço</option>
+                            <option value="Comercial">Comercial</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem">Conte um pouco sobre o projeto</label>
+                    <textarea id="mensagem" name="mensagem" rows="4"
+                        placeholder="Ex: Quero uma cozinha planejada com ilha, tom amadeirado, aproximadamente 8m²..." required></textarea>
+                </div>
+
+                <div class="form-feedback" id="formFeedback" hidden></div>
+
+                <button type="submit" class="btn btn-primary btn-lg" id="btnEnviar">
+                    Enviar pedido de orçamento
+                </button>
+
+            </form>
+        </div>
+    </section>
+
+
+    <!-- =============================== -->
+    <!-- RODAPÉ                           -->
+    <!-- =============================== -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+
+            <div class="footer-brand">
+                <a href="#inicio" class="brand brand--footer">
+                    <img src="images/logo.png" alt="Ed Móveis — Móveis Sob Medida" class="brand-logo brand-logo--footer">
+                </a>
+                <p>Móveis sob medida em MDF, feitos com a precisão e o carinho de quem ama marcenaria.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <ul>
+                    <li>
+                        <a href="https://wa.me/555196387303" target="_blank" rel="noopener">
+                            WhatsApp: (51) 9638-7303
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://instagram.com/ed_moveis9" target="_blank" rel="noopener">
+                            Instagram: @ed_moveis9
+                        </a>
+                    </li>
+                    <li>contato@edmoveis.com.br</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Atendemos</h4>
+                <ul>
+                    <li>Montenegro e região</li>
+                    <li>Vale do Caí</li>
+                    <li>Grande Porto Alegre</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Horários</h4>
+                <ul>
+                    <li>Segunda a sexta: 7h30 às 18h</li>
+                    <li>Sábado: sob consulta</li>
+                    <li>Domingo: fechado</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>© <span id="year"></span> Ed Móveis Marcenaria. Todos os direitos reservados.</p>
+            <p>Feito à mão, como nossos móveis.</p>
+        </div>
+    </footer>
+
+
+    <!-- =============================== -->
+    <!-- BOTÃO FLUTUANTE WHATSAPP         -->
+    <!-- =============================== -->
+    <a class="wa-float"
+       href="https://wa.me/555196387303?text=Olá!%20Gostaria%20de%20um%20orçamento."
+       target="_blank" rel="noopener"
+       aria-label="Falar no WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/>
+        </svg>
+        <span class="wa-pulse" aria-hidden="true"></span>
+    </a>
+
+
+    <!-- =============================== -->
+    <!-- MODAL DE VÍDEO (oculto)          -->
+    <!-- =============================== -->
+    <div class="video-modal" id="videoModal" aria-hidden="true" role="dialog" aria-label="Reprodução de vídeo">
+        <div class="video-modal-backdrop" data-close-modal></div>
+        <div class="video-modal-inner">
+            <button class="video-close" data-close-modal aria-label="Fechar vídeo">×</button>
+            <div class="video-frame" id="videoFrame">
+                <!-- iframe injetado dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Módulos JS — carregados na ordem correta (Controller) -->
+    <script src="js/orcamento.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/scroll.js"></script>
+    <script src="js/videos.js"></script>
+    <script src="js/servicos.js"></script>
+    <script src="js/galeria.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

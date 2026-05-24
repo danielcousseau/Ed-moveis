@@ -1,0 +1,50 @@
+[
+  {
+    "id": "cozinhas",
+    "titulo": "Cozinhas sob medida",
+    "descricao": "Bancadas, ilhas, despensas e torres quentes — funcionalidade total com acabamento de revista.",
+    "icone": "cozinha"
+  },
+  {
+    "id": "dormitorios",
+    "titulo": "Dormitórios sob medida",
+    "descricao": "Camas com baú, cabeceiras integradas, criados e nichos pensados para o seu descanso.",
+    "icone": "cama"
+  },
+  {
+    "id": "banheiros",
+    "titulo": "Banheiros",
+    "descricao": "Gabinetes resistentes à umidade, espelheiras e nichos com iluminação embutida.",
+    "icone": "banheiro"
+  },
+  {
+    "id": "escritorios",
+    "titulo": "Escritórios",
+    "descricao": "Home offices ergonômicos com mesas, prateleiras, gaveteiros e organização total de cabos.",
+    "icone": "escritorio"
+  },
+  {
+    "id": "paineis-tv",
+    "titulo": "Painéis de TV",
+    "descricao": "Painéis ripados, racks suspensos e estantes integradas para a sua sala de estar.",
+    "icone": "tv"
+  },
+  {
+    "id": "roupeiros",
+    "titulo": "Roupeiros",
+    "descricao": "Closets e guarda-roupas com divisórias inteligentes, gavetas internas e cabideiros.",
+    "icone": "roupeiro"
+  },
+  {
+    "id": "areas-servico",
+    "titulo": "Áreas de serviço",
+    "descricao": "Armários, torres para máquinas, tanques embutidos e organização para a sua lavanderia.",
+    "icone": "servico"
+  },
+  {
+    "id": "comercial",
+    "titulo": "Móveis comerciais",
+    "descricao": "Lojas, clínicas, salões e escritórios — projetos sob medida para o seu negócio.",
+    "icone": "comercial"
+  }
+]

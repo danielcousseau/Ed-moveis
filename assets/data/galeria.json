@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "categoria": "cozinha",
+    "titulo": "Cozinha minimalista",
+    "descricao": "Linhas retas, puxadores embutidos e bancada de quartzo.",
+    "imagem": "https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=600&q=80&auto=format&fit=crop",
+    "alt": "Cozinha minimalista branca"
+  },
+  {
+    "id": 2,
+    "categoria": "cozinha",
+    "titulo": "Cozinha com ilha",
+    "descricao": "Ilha multifuncional integrando preparo e refeição rápida.",
+    "imagem": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80&auto=format&fit=crop",
+    "alt": "Cozinha com ilha central"
+  },
+  {
+    "id": 3,
+    "categoria": "quarto",
+    "titulo": "Suíte master",
+    "descricao": "Cabeceira ripada, criados suspensos e iluminação indireta.",
+    "imagem": "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80&auto=format&fit=crop",
+    "alt": "Quarto de casal sob medida"
+  },
+  {
+    "id": 4,
+    "categoria": "quarto",
+    "titulo": "Closet aberto",
+    "descricao": "Divisórias internas, gaveteiros e cabideiros em altura ideal.",
+    "imagem": "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=600&q=80&auto=format&fit=crop",
+    "alt": "Closet com prateleiras"
+  },
+  {
+    "id": 5,
+    "categoria": "banheiro",
+    "titulo": "Lavabo amadeirado",
+    "descricao": "Gabinete suspenso com cuba de apoio e espelho retroiluminado.",
+    "imagem": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80&auto=format&fit=crop",
+    "alt": "Banheiro com gabinete sob medida"
+  },
+  {
+    "id": 6,
+    "categoria": "sala",
+    "titulo": "Painel ripado para TV",
+    "descricao": "Painel ripado em carvalho com nichos e rack suspenso.",
+    "imagem": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80&auto=format&fit=crop",
+    "alt": "Painel de TV com estante"
+  },
+  {
+    "id": 7,
+    "categoria": "sala",
+    "titulo": "Estante living",
+    "descricao": "Estante de chão a teto com iluminação e portas de vidro canelado.",
+    "imagem": "https://images.unsplash.com/photo-1567016376408-0226e4d0c1ea?w=600&q=80&auto=format&fit=crop",
+    "alt": "Estante de sala com livros"
+  },
+  {
+    "id": 8,
+    "categoria": "escritorio",
+    "titulo": "Home office integrado",
+    "descricao": "Mesa em L, prateleiras e gaveteiro com fechadura digital.",
+    "imagem": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&auto=format&fit=crop",
+    "alt": "Home office moderno"
+  },
+  {
+    "id": 9,
+    "categoria": "comercial",
+    "titulo": "Loja conceito",
+    "descricao": "Balcão de atendimento, expositores e área de estoque integrada.",
+    "imagem": "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=600&q=80&auto=format&fit=crop",
+    "alt": "Loja com móveis sob medida"
+  },
+  {
+    "id": 10,
+    "categoria": "comercial",
+    "titulo": "Recepção corporativa",
+    "descricao": "Balcão escultural com painel logotipado e iluminação LED.",
+    "imagem": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80&auto=format&fit=crop",
+    "alt": "Recepção de escritório"
+  },
+  {
+    "id": 11,
+    "categoria": "cozinha",
+    "titulo": "Cozinha amadeirada",
+    "descricao": "Texturas de carvalho americano com torres quentes em laca preta.",
+    "imagem": "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=600&q=80&auto=format&fit=crop",
+    "alt": "Cozinha amadeirada"
+  },
+  {
+    "id": 12,
+    "categoria": "quarto",
+    "titulo": "Quarto infantil",
+    "descricao": "Cama com baú, escrivaninha articulada e cantos arredondados.",
+    "imagem": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80&auto=format&fit=crop",
+    "alt": "Quarto infantil sob medida"
+  }
+]

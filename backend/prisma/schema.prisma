@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id           Int      @id @default(autoincrement())
+  nome         String   @db.VarChar(100)
+  email        String   @unique @db.VarChar(150)
+  senha        String
+  criadoEm    DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  @@index([email])
+  @@map("admins")
+}
+
+model Categoria {
+  id       Int       @id @default(autoincrement())
+  nome     String    @db.VarChar(50)
+  slug     String    @unique @db.VarChar(50)
+  projetos Projeto[]
+
+  @@map("categorias")
+}
+
+model Projeto {
+  id           Int       @id @default(autoincrement())
+  titulo       String    @db.VarChar(150)
+  descricao    String    @db.Text
+  imagem       String
+  alt          String    @db.VarChar(200)
+  ativo        Boolean   @default(true)
+  categoriaId  Int
+  categoria    Categoria @relation(fields: [categoriaId], references: [id])
+  criadoEm    DateTime  @default(now())
+  atualizadoEm DateTime  @updatedAt
+
+  @@index([categoriaId])
+  @@index([ativo])
+  @@map("projetos")
+}
+
+model Cliente {
+  id         Int         @id @default(autoincrement())
+  nome       String      @db.VarChar(100)
+  email      String      @unique @db.VarChar(150)
+  telefone   String      @db.VarChar(20)
+  criadoEm  DateTime    @default(now())
+  orcamentos Orcamento[]
+
+  @@index([email])
+  @@map("clientes")
+}
+
+model Orcamento {
+  id           Int      @id @default(autoincrement())
+  clienteId    Int
+  cliente      Cliente  @relation(fields: [clienteId], references: [id], onDelete: Cascade)
+  ambiente     String   @db.VarChar(100)
+  mensagem     String   @db.Text
+  status       String   @default("pendente") @db.VarChar(30)
+  criadoEm    DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  @@index([clienteId])
+  @@index([status])
+  @@map("orcamentos")
+}
