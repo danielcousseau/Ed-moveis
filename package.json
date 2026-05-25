@@ -6,6 +6,6 @@
   },
   "scripts": {
     "build": "cd backend && npm install && npx prisma generate",
-    "start": "cd backend && npx prisma migrate deploy && node server.js"
+    "start": "cd backend && npx prisma migrate resolve --applied 20260524182825_postgres_init; npx prisma migrate deploy; node server.js"
   }
 }
