@@ -1,0 +1,11 @@
+{
+  "name": "ed-moveis",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "cd backend && npm install && npx prisma generate",
+    "start": "cd backend && npx prisma migrate deploy && node server.js"
+  }
+}
