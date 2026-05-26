@@ -49,23 +49,32 @@
 
         // Fecha ao clicar em qualquer link interno
         mainNav.querySelectorAll('a').forEach(function (link) {
-            link.addEventListener('click', function (e) {
+            function navegarPara(e) {
                 if (!mainNav.classList.contains('is-open')) return;
                 var href = link.getAttribute('href');
                 if (href && href.startsWith('#')) {
                     e.preventDefault();
                     fecharMenu();
                     setTimeout(function () {
-                        var alvo = document.querySelector(href);
-                        if (!alvo) return;
-                        var headerH = header ? header.offsetHeight : 0;
-                        var top = alvo.getBoundingClientRect().top + window.pageYOffset - headerH;
-                        window.scrollTo({ top: top, behavior: 'smooth' });
+                        var alvo = document.getElementById(href.slice(1));
+                        if (alvo) {
+                            var top = alvo.offsetTop - (header ? header.offsetHeight : 0);
+                            window.scrollTo(0, top);
+                        }
                     }, 500);
                 } else {
                     fecharMenu();
                 }
+            }
+
+            // touchend para mobile (sem o delay de 300ms do click)
+            link.addEventListener('touchend', function (e) {
+                e.preventDefault(); // impede o click subsequente
+                navegarPara(e);
             });
+
+            // click para desktop
+            link.addEventListener('click', navegarPara);
         });
 
         // Fecha com tecla Esc (acessibilidade)
