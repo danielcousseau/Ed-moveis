@@ -34,7 +34,7 @@
                 entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Observa só uma vez
+                        observer.unobserve(entry.target);
                     }
                 });
             }, {
@@ -43,14 +43,65 @@
             });
 
             elementos.forEach(function (el, i) {
-                // Stagger nos cards para efeito de entrada em cascata
                 el.style.transitionDelay = (Math.min(i % 4, 3) * 80) + 'ms';
                 observer.observe(el);
             });
 
         } else {
-            // Fallback: mostra tudo em navegadores antigos sem suporte
             elementos.forEach(function (el) { el.classList.add('is-visible'); });
+        }
+
+        // --- Palavras rotativas no título do hero ---
+        var emHero = document.querySelector('.hero-title em');
+        if (emHero) {
+            var palavras = ['únicos', 'elegantes', 'perfeitos', 'exclusivos'];
+            var idxPalavra = 0;
+            emHero.textContent = palavras[0];
+            setInterval(function () {
+                emHero.classList.add('saindo');
+                setTimeout(function () {
+                    idxPalavra = (idxPalavra + 1) % palavras.length;
+                    emHero.textContent = palavras[idxPalavra];
+                    emHero.classList.remove('saindo');
+                }, 400);
+            }, 2800);
+        }
+
+        // --- Contadores animados nos stats do hero ---
+        var statsEl = document.querySelector('.hero-meta');
+        if (statsEl && 'IntersectionObserver' in window) {
+            var contadores = [
+                { el: statsEl.querySelectorAll('strong')[0], valor: 80, fmt: function(n){ return '+' + n; } },
+                { el: statsEl.querySelectorAll('strong')[1], valor: 8,  fmt: function(n){ return n + ' anos'; } },
+                { el: statsEl.querySelectorAll('strong')[2], valor: 5,  fmt: function(n){ return n + '★'; } }
+            ];
+            var contado = false;
+            var obsCount = new IntersectionObserver(function (entries) {
+                if (!entries[0].isIntersecting || contado) return;
+                contado = true;
+                contadores.forEach(function (c) {
+                    if (!c.el) return;
+                    var inicio = performance.now();
+                    var dur = 1800;
+                    (function tick(agora) {
+                        var p = Math.min((agora - inicio) / dur, 1);
+                        var ease = 1 - Math.pow(1 - p, 3);
+                        c.el.textContent = c.fmt(Math.round(ease * c.valor));
+                        if (p < 1) requestAnimationFrame(tick);
+                    })(performance.now());
+                });
+            }, { threshold: 0.6 });
+            obsCount.observe(statsEl);
+        }
+
+        // --- Parallax suave no fundo do hero ---
+        var heroBg = document.querySelector('.hero-bg');
+        if (heroBg) {
+            window.addEventListener('scroll', function () {
+                if (window.scrollY < window.innerHeight * 1.2) {
+                    heroBg.style.transform = 'translateY(' + (window.scrollY * 0.35) + 'px)';
+                }
+            }, { passive: true });
         }
     }
 

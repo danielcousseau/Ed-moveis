@@ -1206,6 +1206,45 @@ p { color: var(--gray-700); }
     transform: translateY(0);
 }
 
+/* Palavra rotativa no hero */
+.hero-title em {
+    display: inline-block;
+    color: var(--gold-light);
+    font-style: italic;
+    transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.hero-title em.saindo {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+/* Flutuação nas badges */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+}
+.hero-img-tag  { animation: float 3.5s ease-in-out infinite; }
+.sobre-badge   { animation: float 4.2s ease-in-out infinite; }
+
+/* Brilho nos botões primários */
+@keyframes shine {
+    0%   { left: -80%; }
+    100% { left: 130%; }
+}
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+}
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -80%;
+    width: 50%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.18), transparent);
+    transform: skewX(-20deg);
+    animation: shine 3.5s ease-in-out infinite;
+}
+
 
 /* ==========================================================
    RESPONSIVO — MEDIA QUERIES
