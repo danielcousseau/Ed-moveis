@@ -1279,7 +1279,7 @@ p { color: var(--gray-700); }
         opacity: 0;
         pointer-events: none;
         transition: opacity var(--t-fast);
-        z-index: 100;
+        z-index: 99;
     }
     .nav-overlay.is-visible {
         opacity: 1;
