@@ -103,6 +103,45 @@
                 }
             }, { passive: true });
         }
+
+        // --- Barra de progresso de scroll ---
+        var progressBar = document.getElementById('scrollProgress');
+        if (progressBar) {
+            window.addEventListener('scroll', function () {
+                var total = document.documentElement.scrollHeight - window.innerHeight;
+                progressBar.style.width = ((window.scrollY / total) * 100) + '%';
+            }, { passive: true });
+        }
+
+        // --- Slider interativo Antes/Depois ---
+        document.querySelectorAll('.ba-slider').forEach(function (slider) {
+            var arrastando = false;
+
+            function moverPara(x) {
+                var rect = slider.getBoundingClientRect();
+                var pos = Math.max(5, Math.min(95, ((x - rect.left) / rect.width) * 100));
+                slider.style.setProperty('--ba-pos', pos + '%');
+                slider.classList.add('dragged');
+            }
+
+            slider.addEventListener('mousedown', function (e) {
+                arrastando = true;
+                moverPara(e.clientX);
+            });
+            window.addEventListener('mousemove', function (e) {
+                if (arrastando) moverPara(e.clientX);
+            });
+            window.addEventListener('mouseup', function () { arrastando = false; });
+
+            slider.addEventListener('touchstart', function (e) {
+                arrastando = true;
+                moverPara(e.touches[0].clientX);
+            }, { passive: true });
+            slider.addEventListener('touchmove', function (e) {
+                if (arrastando) moverPara(e.touches[0].clientX);
+            }, { passive: true });
+            window.addEventListener('touchend', function () { arrastando = false; });
+        });
     }
 
     namespace.iniciarScroll = iniciarScroll;

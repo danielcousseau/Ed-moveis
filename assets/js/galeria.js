@@ -103,9 +103,72 @@
         if (filtroAtivo !== 'all') aplicarFiltro(filtroAtivo);
     }
 
+    function iniciarLightbox() {
+        var lb        = document.getElementById('lightbox');
+        var lbImg     = document.getElementById('lightboxImg');
+        var lbTitulo  = document.getElementById('lightboxTitulo');
+        var lbClose   = document.getElementById('lightboxClose');
+        var lbPrev    = document.getElementById('lightboxPrev');
+        var lbNext    = document.getElementById('lightboxNext');
+        var lbBackdrop = document.getElementById('lightboxBackdrop');
+        if (!lb) return;
+
+        var itens = [];
+        var idx = 0;
+
+        function abrir(i) {
+            itens = Array.from(document.querySelectorAll('.gallery-item:not(.is-hidden)'));
+            idx = i;
+            var item = itens[idx];
+            if (!item) return;
+            lbImg.src = item.querySelector('img').src;
+            lbImg.alt = item.querySelector('img').alt;
+            lbTitulo.textContent = (item.querySelector('h3') || {}).textContent || '';
+            lb.classList.add('is-open');
+            lb.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fechar() {
+            lb.classList.remove('is-open');
+            lb.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            lbImg.src = '';
+        }
+
+        function navegar(dir) {
+            idx = (idx + dir + itens.length) % itens.length;
+            lbImg.style.opacity = '0';
+            setTimeout(function () {
+                abrir(idx);
+                lbImg.style.opacity = '';
+            }, 150);
+        }
+
+        document.getElementById('gallery').addEventListener('click', function (e) {
+            var item = e.target.closest('.gallery-item');
+            if (!item) return;
+            var todos = Array.from(document.querySelectorAll('.gallery-item:not(.is-hidden)'));
+            abrir(todos.indexOf(item));
+        });
+
+        lbClose.addEventListener('click', fechar);
+        lbBackdrop.addEventListener('click', fechar);
+        lbPrev.addEventListener('click', function () { navegar(-1); });
+        lbNext.addEventListener('click', function () { navegar(1); });
+
+        document.addEventListener('keydown', function (e) {
+            if (!lb.classList.contains('is-open')) return;
+            if (e.key === 'Escape')     fechar();
+            if (e.key === 'ArrowLeft')  navegar(-1);
+            if (e.key === 'ArrowRight') navegar(1);
+        });
+    }
+
     function iniciarGaleria() {
         iniciarFiltros();
         atualizarBotaoPinterest('all');
+        iniciarLightbox();
 
         // Busca projetos da API
         fetch('/api/galeria')

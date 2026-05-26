@@ -20,6 +20,9 @@
 </head>
 <body>
 
+    <!-- Barra de progresso de scroll -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <!-- =============================== -->
     <!-- CABEÇALHO / MENU FIXO            -->
     <!-- =============================== -->
@@ -255,17 +258,19 @@
             <div class="ad-grid">
 
                 <article class="ad-card reveal">
-                    <div class="ad-pair">
-                        <figure class="ad-figure">
-                            <span class="ad-label ad-label--before">Antes</span>
-                            <img src="https://images.unsplash.com/photo-1556909043-f0f3b2d8e6c3?w=600&q=80&auto=format&fit=crop"
-                                 alt="Cozinha antes da reforma" loading="lazy">
-                        </figure>
-                        <figure class="ad-figure">
-                            <span class="ad-label ad-label--after">Depois</span>
-                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80&auto=format&fit=crop"
-                                 alt="Cozinha depois da reforma" loading="lazy">
-                        </figure>
+                    <div class="ba-slider" style="--ba-pos:50%">
+                        <img class="ba-before" src="https://images.unsplash.com/photo-1556909043-f0f3b2d8e6c3?w=800&q=80&auto=format&fit=crop" alt="Cozinha antes da reforma" loading="lazy">
+                        <div class="ba-after-wrap">
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&auto=format&fit=crop" alt="Cozinha depois da reforma" loading="lazy">
+                        </div>
+                        <span class="ba-tag ba-tag--antes">Antes</span>
+                        <span class="ba-tag ba-tag--depois">Depois</span>
+                        <div class="ba-handle">
+                            <div class="ba-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 12H3m0 0l4-4m-4 4l4 4M16 12h5m0 0l-4-4m4 4l-4 4"/></svg>
+                            </div>
+                        </div>
+                        <p class="ba-dica">← Arraste para comparar →</p>
                     </div>
                     <div class="ad-info">
                         <h3>Cozinha do casal Silva</h3>
@@ -274,17 +279,19 @@
                 </article>
 
                 <article class="ad-card reveal">
-                    <div class="ad-pair">
-                        <figure class="ad-figure">
-                            <span class="ad-label ad-label--before">Antes</span>
-                            <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&q=80&auto=format&fit=crop"
-                                 alt="Quarto vazio antes" loading="lazy">
-                        </figure>
-                        <figure class="ad-figure">
-                            <span class="ad-label ad-label--after">Depois</span>
-                            <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80&auto=format&fit=crop"
-                                 alt="Quarto reformado depois" loading="lazy">
-                        </figure>
+                    <div class="ba-slider" style="--ba-pos:50%">
+                        <img class="ba-before" src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&q=80&auto=format&fit=crop" alt="Quarto vazio antes" loading="lazy">
+                        <div class="ba-after-wrap">
+                            <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80&auto=format&fit=crop" alt="Quarto reformado depois" loading="lazy">
+                        </div>
+                        <span class="ba-tag ba-tag--antes">Antes</span>
+                        <span class="ba-tag ba-tag--depois">Depois</span>
+                        <div class="ba-handle">
+                            <div class="ba-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 12H3m0 0l4-4m-4 4l4 4M16 12h5m0 0l-4-4m4 4l-4 4"/></svg>
+                            </div>
+                        </div>
+                        <p class="ba-dica">← Arraste para comparar →</p>
                     </div>
                     <div class="ad-info">
                         <h3>Suíte apartamento Trindade</h3>
@@ -293,17 +300,19 @@
                 </article>
 
                 <article class="ad-card reveal">
-                    <div class="ad-pair">
-                        <figure class="ad-figure">
-                            <span class="ad-label ad-label--before">Antes</span>
-                            <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&q=80&auto=format&fit=crop"
-                                 alt="Sala antes" loading="lazy">
-                        </figure>
-                        <figure class="ad-figure">
-                            <span class="ad-label ad-label--after">Depois</span>
-                            <img src="https://images.unsplash.com/photo-1567016376408-0226e4d0c1ea?w=600&q=80&auto=format&fit=crop"
-                                 alt="Sala depois com painel" loading="lazy">
-                        </figure>
+                    <div class="ba-slider" style="--ba-pos:50%">
+                        <img class="ba-before" src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=800&q=80&auto=format&fit=crop" alt="Sala antes" loading="lazy">
+                        <div class="ba-after-wrap">
+                            <img src="https://images.unsplash.com/photo-1567016376408-0226e4d0c1ea?w=800&q=80&auto=format&fit=crop" alt="Sala depois com painel" loading="lazy">
+                        </div>
+                        <span class="ba-tag ba-tag--antes">Antes</span>
+                        <span class="ba-tag ba-tag--depois">Depois</span>
+                        <div class="ba-handle">
+                            <div class="ba-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 12H3m0 0l4-4m-4 4l4 4M16 12h5m0 0l-4-4m4 4l-4 4"/></svg>
+                            </div>
+                        </div>
+                        <p class="ba-dica">← Arraste para comparar →</p>
                     </div>
                     <div class="ad-info">
                         <h3>Sala de estar — Família Costa</h3>
@@ -312,17 +321,19 @@
                 </article>
 
                 <article class="ad-card reveal">
-                    <div class="ad-pair">
-                        <figure class="ad-figure">
-                            <span class="ad-label ad-label--before">Antes</span>
-                            <img src="https://images.unsplash.com/photo-1556909114-44e3e9399a2e?w=600&q=80&auto=format&fit=crop"
-                                 alt="Escritório antes" loading="lazy">
-                        </figure>
-                        <figure class="ad-figure">
-                            <span class="ad-label ad-label--after">Depois</span>
-                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&auto=format&fit=crop"
-                                 alt="Escritório depois com home office" loading="lazy">
-                        </figure>
+                    <div class="ba-slider" style="--ba-pos:50%">
+                        <img class="ba-before" src="https://images.unsplash.com/photo-1556909114-44e3e9399a2e?w=800&q=80&auto=format&fit=crop" alt="Escritório antes" loading="lazy">
+                        <div class="ba-after-wrap">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop" alt="Escritório depois com home office" loading="lazy">
+                        </div>
+                        <span class="ba-tag ba-tag--antes">Antes</span>
+                        <span class="ba-tag ba-tag--depois">Depois</span>
+                        <div class="ba-handle">
+                            <div class="ba-circle">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M8 12H3m0 0l4-4m-4 4l4 4M16 12h5m0 0l-4-4m4 4l-4 4"/></svg>
+                            </div>
+                        </div>
+                        <p class="ba-dica">← Arraste para comparar →</p>
                     </div>
                     <div class="ad-info">
                         <h3>Home office — Ana &amp; Bruno</h3>
@@ -618,6 +629,18 @@
         </div>
     </div>
 
+
+    <!-- Lightbox da galeria -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+        <button class="lightbox-close" id="lightboxClose" aria-label="Fechar">×</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Anterior">&#8249;</button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Próximo">&#8250;</button>
+        <div class="lightbox-inner">
+            <img id="lightboxImg" src="" alt="">
+            <p id="lightboxTitulo" class="lightbox-titulo"></p>
+        </div>
+    </div>
 
     <!-- Módulos JS — carregados na ordem correta (Controller) -->
     <script src="js/orcamento.js"></script>
