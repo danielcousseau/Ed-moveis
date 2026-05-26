@@ -57,8 +57,11 @@
                     fecharMenu();
                     setTimeout(function () {
                         var alvo = document.querySelector(href);
-                        if (alvo) alvo.scrollIntoView({ behavior: 'smooth' });
-                    }, 300);
+                        if (!alvo) return;
+                        var headerH = header ? header.offsetHeight : 0;
+                        var top = alvo.getBoundingClientRect().top + window.pageYOffset - headerH;
+                        window.scrollTo({ top: top, behavior: 'smooth' });
+                    }, 500);
                 } else {
                     fecharMenu();
                 }
