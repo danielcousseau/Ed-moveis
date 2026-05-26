@@ -1401,6 +1401,58 @@ p { color: var(--gray-700); }
 }
 
 
+/* ============================================
+   TOUCH / MOBILE — sem hover, foco em toque
+   ============================================ */
+
+@keyframes pulse-play {
+    0%, 100% { transform: translate(-50%, -50%) scale(1);    box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    50%       { transform: translate(-50%, -50%) scale(1.14); box-shadow: 0 12px 32px rgba(184,137,62,0.55); }
+}
+
+@media (hover: none) {
+
+    /* Barra dourada dos cards de serviço sempre visível */
+    .service-card::before { transform: scaleX(1); }
+
+    /* Imagens da galeria e antes/depois levemente ampliadas (sem hover para acionar) */
+    .gallery-img img { transform: scale(1.04); }
+    .ad-figure img   { transform: scale(1.03); }
+
+    /* Play button pulsa em loop */
+    .play-btn { animation: pulse-play 2.2s ease-in-out infinite; }
+
+    /* Feedback visual de toque (escala ao apertar) */
+    .service-card:active,
+    .gallery-item:active,
+    .video-card:active,
+    .dif-card:active,
+    .ad-card:active {
+        transform: scale(0.96) !important;
+        transition: transform 0.1s !important;
+    }
+
+    .btn:active,
+    .filter-btn:active {
+        transform: scale(0.94) !important;
+        transition: transform 0.08s !important;
+    }
+
+    /* Remove delay de 300ms nos elementos interativos */
+    .service-card,
+    .gallery-item,
+    .video-card,
+    .dif-card,
+    .ad-card,
+    .btn,
+    .filter-btn {
+        touch-action: manipulation;
+    }
+
+    /* Brilho nos botões mais rápido no mobile */
+    .btn-primary::after { animation-duration: 2.5s; }
+}
+
 /* Respeitar preferência de movimento reduzido */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
