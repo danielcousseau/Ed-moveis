@@ -1,6 +1,22 @@
 const galeriaRepository = require('../repositories/galeriaRepository')
 const categoriaRepository = require('../repositories/categoriaRepository')
 const { validarCriarProjeto, validarAtualizarProjeto } = require('../dto/galeriaDTO')
+const supabase = require('../config/supabase')
+const path = require('path')
+
+const BUCKET = 'galeria'
+
+async function uploadImagem(arquivo) {
+  const ext = path.extname(arquivo.originalname)
+  const nome = `${Date.now()}-${Math.round(Math.random() * 1e9)}${ext}`
+  const { error } = await supabase.storage.from(BUCKET).upload(nome, arquivo.buffer, {
+    contentType: arquivo.mimetype,
+    upsert: false
+  })
+  if (error) throw { status: 500, message: 'Erro ao fazer upload da imagem: ' + error.message }
+  const { data } = supabase.storage.from(BUCKET).getPublicUrl(nome)
+  return data.publicUrl
+}
 
 const listar = async (categoriaSlug) => {
   let categoriaId
@@ -29,11 +45,13 @@ const criar = async (body, arquivo) => {
   const categoria = await categoriaRepository.encontrarPorSlug(body.categoria)
   if (!categoria) throw { status: 400, message: 'Categoria inválida' }
 
+  const urlImagem = await uploadImagem(arquivo)
+
   return galeriaRepository.criar({
     titulo:      body.titulo.trim(),
     descricao:   body.descricao.trim(),
     alt:         body.alt.trim(),
-    imagem:      `/uploads/${arquivo.filename}`,
+    imagem:      urlImagem,
     categoriaId: categoria.id
   })
 }
@@ -49,7 +67,7 @@ const atualizar = async (id, body, arquivo) => {
   if (body.descricao) dados.descricao = body.descricao.trim()
   if (body.alt)       dados.alt       = body.alt.trim()
   if (body.ativo !== undefined) dados.ativo = body.ativo === 'true' || body.ativo === true
-  if (arquivo) dados.imagem = `/uploads/${arquivo.filename}`
+  if (arquivo) dados.imagem = await uploadImagem(arquivo)
 
   if (body.categoria) {
     const categoria = await categoriaRepository.encontrarPorSlug(body.categoria)
