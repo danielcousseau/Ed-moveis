@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Ed Móveis</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        * { margin: 0; padding: 0; }
+        img { max-width: 100%; display: block; }
+        button { cursor: pointer; }
+        a { color: inherit; text-decoration: none; }
+
+        :root {
+            --cream:    #f8f3ea;
+            --charcoal: #1c1916;
+            --gold:     #b8893e;
+            --gold-l:   #d4a85a;
+            --gray-900: #2a2622;
+            --gray-500: #3d3833;
+            --gray-300: #c9c3ba;
+            --gray-200: #e2dcd2;
+            --gray-100: #efeae0;
+            --white:    #ffffff;
+            --red:      #c0392b;
+            --green:    #27ae60;
+            --font-d:   'Georgia', serif;
+            --font-s:   -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-s);
+            background: var(--gray-100);
+            color: var(--gray-900);
+            min-height: 100vh;
+        }
+
+        /* ---- LOGIN ---- */
+        #loginScreen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--charcoal);
+            padding: 1.5rem;
+        }
+
+        .login-box {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 32px 80px rgba(0,0,0,0.35);
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-logo span {
+            font-family: var(--font-d);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            letter-spacing: -0.03em;
+        }
+
+        .login-logo small {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--gray-500);
+            margin-top: 0.2rem;
+        }
+
+        .login-box h1 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 1.75rem;
+            color: var(--gray-900);
+        }
+
+        .field { margin-bottom: 1.1rem; }
+        .field label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--gray-500);
+            margin-bottom: 0.4rem;
+        }
+        .field input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: var(--font-s);
+            background: var(--gray-100);
+            transition: border-color 0.2s;
+        }
+        .field input:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: white;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 0.9rem;
+            background: var(--charcoal);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn-login:hover { background: var(--gray-900); transform: translateY(-1px); }
+        .btn-login:active { transform: translateY(0); }
+        .btn-login:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        .login-erro {
+            display: none;
+            margin-top: 1rem;
+            padding: 0.65rem 1rem;
+            background: #fde8e6;
+            border: 1px solid #f5c6c2;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--red);
+        }
+
+        /* ---- PAINEL ---- */
+        #painel { display: none; }
+
+        .admin-header {
+            background: var(--charcoal);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+
+        .admin-brand {
+            font-family: var(--font-d);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .admin-brand small {
+            font-family: var(--font-s);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-300);
+            margin-left: 0.5rem;
+        }
+
+        .btn-sair {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0.5rem 1.1rem;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            font-family: var(--font-s);
+            transition: background 0.2s;
+        }
+        .btn-sair:hover { background: rgba(255,255,255,0.18); }
+
+        .admin-body {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        /* ---- FORMULÁRIO NOVO PROJETO ---- */
+        .card {
+            background: white;
+            border-radius: 14px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            margin-bottom: 2.5rem;
+        }
+
+        .card h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--gray-200);
+            color: var(--charcoal);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-grid .span-2 { grid-column: 1 / -1; }
+
+        .form-field { display: flex; flex-direction: column; gap: 0.35rem; }
+
+        .form-field label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--gray-500);
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            padding: 0.65rem 0.9rem;
+            border: 1.5px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-family: var(--font-s);
+            background: var(--gray-100);
+            transition: border-color 0.2s;
+            resize: vertical;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: white;
+        }
+
+        .form-field input[type="file"] {
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .upload-preview {
+            margin-top: 0.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            max-height: 180px;
+            display: none;
+        }
+
+        .upload-preview img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .form-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .btn-salvar {
+            padding: 0.75rem 2rem;
+            background: var(--charcoal);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            font-family: var(--font-s);
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn-salvar:hover { background: var(--gray-900); transform: translateY(-1px); }
+        .btn-salvar:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        .form-status {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .form-status.ok  { color: var(--green); }
+        .form-status.err { color: var(--red); }
+
+        /* ---- LISTA DE PROJETOS ---- */
+        .projects-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .projects-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--charcoal);
+        }
+
+        .badge-count {
+            background: var(--gold);
+            color: var(--charcoal);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.2rem 0.55rem;
+            border-radius: 20px;
+            margin-left: 0.5rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .proj-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .proj-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+        }
+
+        .proj-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .proj-info {
+            padding: 1rem;
+        }
+
+        .proj-cat {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .proj-titulo {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            line-height: 1.3;
+            margin-bottom: 0.4rem;
+        }
+
+        .proj-desc {
+            font-size: 0.78rem;
+            color: var(--gray-500);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .proj-actions {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .btn-excluir {
+            flex: 1;
+            padding: 0.5rem;
+            background: #fde8e6;
+            color: var(--red);
+            border: 1px solid #f5c6c2;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            font-family: var(--font-s);
+            transition: background 0.15s;
+        }
+        .btn-excluir:hover { background: #f9d0cc; }
+
+        .proj-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--gray-300);
+            font-size: 1rem;
+        }
+
+        .proj-loading {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray-500);
+        }
+
+        /* ---- MODAL CONFIRMAR ---- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 500;
+            padding: 1.5rem;
+        }
+        .modal-overlay.is-open { display: flex; }
+
+        .modal-box {
+            background: white;
+            border-radius: 14px;
+            padding: 2rem;
+            max-width: 380px;
+            width: 100%;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+        }
+
+        .modal-box h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-box p {
+            font-size: 0.88rem;
+            color: var(--gray-500);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+        }
+
+        .btn-cancelar {
+            padding: 0.6rem 1.4rem;
+            border: 1.5px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            font-family: var(--font-s);
+            background: white;
+            color: var(--gray-500);
+            transition: background 0.15s;
+        }
+        .btn-cancelar:hover { background: var(--gray-100); }
+
+        .btn-confirmar {
+            padding: 0.6rem 1.4rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            font-family: var(--font-s);
+            background: var(--red);
+            color: white;
+            transition: background 0.15s;
+        }
+        .btn-confirmar:hover { background: #a93226; }
+
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .form-grid .span-2 { grid-column: 1; }
+            .admin-header { padding: 0.85rem 1rem; }
+            .admin-body { padding: 1.5rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== TELA DE LOGIN ===== -->
+<div id="loginScreen">
+    <div class="login-box">
+        <div class="login-logo">
+            <span>Ed Móveis</span>
+            <small>Painel Administrativo</small>
+        </div>
+        <h1>Entrar</h1>
+        <form id="loginForm" novalidate>
+            <div class="field">
+                <label for="email">E-mail</label>
+                <input type="email" id="loginEmail" placeholder="admin@edmoveis.com.br" autocomplete="username" required>
+            </div>
+            <div class="field">
+                <label for="senha">Senha</label>
+                <input type="password" id="loginSenha" placeholder="••••••••" autocomplete="current-password" required>
+            </div>
+            <button type="submit" class="btn-login" id="btnEntrar">Entrar</button>
+            <div class="login-erro" id="loginErro"></div>
+        </form>
+    </div>
+</div>
+
+
+<!-- ===== PAINEL PRINCIPAL ===== -->
+<div id="painel">
+
+    <header class="admin-header">
+        <div class="admin-brand">
+            Ed Móveis <small>Admin</small>
+        </div>
+        <button class="btn-sair" id="btnSair">Sair</button>
+    </header>
+
+    <div class="admin-body">
+
+        <!-- FORMULÁRIO NOVO PROJETO -->
+        <div class="card">
+            <h2>+ Adicionar novo projeto</h2>
+            <form id="projetoForm" enctype="multipart/form-data" novalidate>
+                <div class="form-grid">
+
+                    <div class="form-field">
+                        <label for="titulo">Título do projeto *</label>
+                        <input type="text" id="titulo" name="titulo" placeholder="Ex: Cozinha família Silva" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="categoria">Categoria *</label>
+                        <select id="categoria" name="categoria" required>
+                            <option value="">Selecione...</option>
+                            <option value="cozinha">Cozinha</option>
+                            <option value="quarto">Quarto</option>
+                            <option value="banheiro">Banheiro</option>
+                            <option value="sala">Sala</option>
+                            <option value="escritorio">Escritório</option>
+                            <option value="comercial">Comercial</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field span-2">
+                        <label for="descricao">Descrição *</label>
+                        <textarea id="descricao" name="descricao" rows="2"
+                            placeholder="Ex: Cozinha planejada com torre quente, ilha e despensa, tudo sob medida."></textarea>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="alt">Texto alternativo da imagem *</label>
+                        <input type="text" id="alt" name="alt" placeholder="Ex: Cozinha sob medida em MDF">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="imagem">Foto do projeto *</label>
+                        <input type="file" id="imagem" name="imagem" accept="image/*" required>
+                        <div class="upload-preview" id="uploadPreview">
+                            <img id="previewImg" src="" alt="Preview">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-salvar" id="btnSalvar">Salvar projeto</button>
+                    <span class="form-status" id="formStatus"></span>
+                </div>
+            </form>
+        </div>
+
+        <!-- LISTA DE PROJETOS -->
+        <div>
+            <div class="projects-header">
+                <h2>
+                    Projetos cadastrados
+                    <span class="badge-count" id="totalCount">0</span>
+                </h2>
+                <button class="btn-salvar" id="btnAtualizar" style="padding:0.5rem 1.25rem;font-size:0.82rem;">
+                    ↻ Atualizar lista
+                </button>
+            </div>
+            <div class="projects-grid" id="projetosGrid">
+                <p class="proj-loading">Carregando projetos...</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- MODAL DE CONFIRMAÇÃO -->
+<div class="modal-overlay" id="modalConfirmar">
+    <div class="modal-box">
+        <h3>Excluir projeto?</h3>
+        <p>Esta ação não pode ser desfeita. O projeto e a imagem serão removidos permanentemente.</p>
+        <div class="modal-actions">
+            <button class="btn-cancelar" id="modalCancelar">Cancelar</button>
+            <button class="btn-confirmar" id="modalConfirmarBtn">Excluir</button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function () {
+    'use strict';
+
+    var token = localStorage.getItem('edm_token');
+    var idParaExcluir = null;
+
+    // ---- DOM ----
+    var loginScreen  = document.getElementById('loginScreen');
+    var painel       = document.getElementById('painel');
+    var loginForm    = document.getElementById('loginForm');
+    var loginEmail   = document.getElementById('loginEmail');
+    var loginSenha   = document.getElementById('loginSenha');
+    var btnEntrar    = document.getElementById('btnEntrar');
+    var loginErro    = document.getElementById('loginErro');
+    var btnSair      = document.getElementById('btnSair');
+    var projetoForm  = document.getElementById('projetoForm');
+    var btnSalvar    = document.getElementById('btnSalvar');
+    var formStatus   = document.getElementById('formStatus');
+    var projetosGrid = document.getElementById('projetosGrid');
+    var totalCount   = document.getElementById('totalCount');
+    var btnAtualizar = document.getElementById('btnAtualizar');
+    var imagemInput  = document.getElementById('imagem');
+    var uploadPreview= document.getElementById('uploadPreview');
+    var previewImg   = document.getElementById('previewImg');
+    var modalOverlay = document.getElementById('modalConfirmar');
+    var modalCancelar= document.getElementById('modalCancelar');
+    var modalConfirmar = document.getElementById('modalConfirmarBtn');
+
+    // ---- INICIALIZAÇÃO ----
+    if (token) {
+        mostrarPainel();
+    }
+
+    // ---- LOGIN ----
+    loginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        loginErro.style.display = 'none';
+        btnEntrar.disabled = true;
+        btnEntrar.textContent = 'Entrando...';
+
+        fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: loginEmail.value.trim(),
+                senha: loginSenha.value
+            })
+        })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+            if (data.data && data.data.token) {
+                token = data.data.token;
+                localStorage.setItem('edm_token', token);
+                mostrarPainel();
+            } else {
+                throw new Error(data.message || 'Credenciais inválidas');
+            }
+        })
+        .catch(function (err) {
+            loginErro.textContent = err.message || 'Erro ao conectar. Tente novamente.';
+            loginErro.style.display = 'block';
+        })
+        .finally(function () {
+            btnEntrar.disabled = false;
+            btnEntrar.textContent = 'Entrar';
+        });
+    });
+
+    // ---- SAIR ----
+    btnSair.addEventListener('click', function () {
+        localStorage.removeItem('edm_token');
+        token = null;
+        loginScreen.style.display = 'flex';
+        painel.style.display = 'none';
+        loginEmail.value = '';
+        loginSenha.value = '';
+    });
+
+    // ---- MOSTRAR PAINEL ----
+    function mostrarPainel() {
+        loginScreen.style.display = 'none';
+        painel.style.display = 'block';
+        carregarProjetos();
+    }
+
+    // ---- PREVIEW DA IMAGEM ----
+    imagemInput.addEventListener('change', function () {
+        var file = imagemInput.files[0];
+        if (!file) { uploadPreview.style.display = 'none'; return; }
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            previewImg.src = e.target.result;
+            uploadPreview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    });
+
+    // ---- CRIAR PROJETO ----
+    projetoForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var titulo    = document.getElementById('titulo').value.trim();
+        var categoria = document.getElementById('categoria').value;
+        var descricao = document.getElementById('descricao').value.trim();
+        var alt       = document.getElementById('alt').value.trim();
+        var arquivo   = imagemInput.files[0];
+
+        if (!titulo || !categoria || !descricao || !alt || !arquivo) {
+            mostrarStatus('Preencha todos os campos obrigatórios.', false);
+            return;
+        }
+
+        btnSalvar.disabled = true;
+        btnSalvar.textContent = 'Salvando...';
+        formStatus.textContent = '';
+
+        var formData = new FormData();
+        formData.append('titulo',    titulo);
+        formData.append('categoria', categoria);
+        formData.append('descricao', descricao);
+        formData.append('alt',       alt);
+        formData.append('imagem',    arquivo);
+
+        fetch('/api/galeria', {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer ' + token },
+            body: formData
+        })
+        .then(function (res) {
+            if (res.status === 401) { expirado(); return null; }
+            return res.json();
+        })
+        .then(function (data) {
+            if (!data) return;
+            if (data.data) {
+                mostrarStatus('Projeto salvo com sucesso!', true);
+                projetoForm.reset();
+                uploadPreview.style.display = 'none';
+                carregarProjetos();
+            } else {
+                throw new Error(data.message || 'Erro ao salvar');
+            }
+        })
+        .catch(function (err) {
+            mostrarStatus(err.message || 'Erro ao salvar projeto.', false);
+        })
+        .finally(function () {
+            btnSalvar.disabled = false;
+            btnSalvar.textContent = 'Salvar projeto';
+        });
+    });
+
+    // ---- CARREGAR PROJETOS ----
+    function carregarProjetos() {
+        projetosGrid.innerHTML = '<p class="proj-loading">Carregando projetos...</p>';
+        totalCount.textContent = '...';
+
+        fetch('/api/galeria', {
+            headers: { 'Authorization': 'Bearer ' + token }
+        })
+        .then(function (res) {
+            if (res.status === 401) { expirado(); return null; }
+            return res.json();
+        })
+        .then(function (data) {
+            if (!data) return;
+            var lista = data.data || [];
+            totalCount.textContent = lista.length;
+            renderizarProjetos(lista);
+        })
+        .catch(function () {
+            projetosGrid.innerHTML = '<p class="proj-empty">Erro ao carregar projetos. Verifique a conexão.</p>';
+        });
+    }
+
+    btnAtualizar.addEventListener('click', carregarProjetos);
+
+    // ---- RENDERIZAR PROJETOS ----
+    function renderizarProjetos(lista) {
+        if (lista.length === 0) {
+            projetosGrid.innerHTML = '<p class="proj-empty">Nenhum projeto cadastrado ainda.<br>Adicione o primeiro projeto acima!</p>';
+            return;
+        }
+
+        projetosGrid.innerHTML = '';
+        lista.forEach(function (proj) {
+            var card = document.createElement('div');
+            card.className = 'proj-card';
+            card.innerHTML =
+                '<img class="proj-img" src="' + proj.imagem + '" alt="' + (proj.alt || proj.titulo) + '" loading="lazy" onerror="this.src=\'data:image/svg+xml,<svg xmlns=\\\"http://www.w3.org/2000/svg\\\" viewBox=\\\"0 0 1 1\\\"><rect fill=\\\"#e2dcd2\\\"/></svg>\'">' +
+                '<div class="proj-info">' +
+                '  <div class="proj-cat">' + (proj.categoria ? proj.categoria.nome : '') + '</div>' +
+                '  <div class="proj-titulo">' + proj.titulo + '</div>' +
+                '  <div class="proj-desc">' + (proj.descricao || '') + '</div>' +
+                '</div>' +
+                '<div class="proj-actions">' +
+                '  <button class="btn-excluir" data-id="' + proj.id + '">Excluir</button>' +
+                '</div>';
+            projetosGrid.appendChild(card);
+        });
+
+        projetosGrid.querySelectorAll('.btn-excluir').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                idParaExcluir = parseInt(btn.dataset.id);
+                modalOverlay.classList.add('is-open');
+            });
+        });
+    }
+
+    // ---- MODAL EXCLUIR ----
+    modalCancelar.addEventListener('click', function () {
+        modalOverlay.classList.remove('is-open');
+        idParaExcluir = null;
+    });
+
+    modalOverlay.addEventListener('click', function (e) {
+        if (e.target === modalOverlay) {
+            modalOverlay.classList.remove('is-open');
+            idParaExcluir = null;
+        }
+    });
+
+    modalConfirmar.addEventListener('click', function () {
+        if (!idParaExcluir) return;
+        modalConfirmar.disabled = true;
+        modalConfirmar.textContent = 'Excluindo...';
+
+        fetch('/api/galeria/' + idParaExcluir, {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer ' + token }
+        })
+        .then(function (res) {
+            if (res.status === 401) { expirado(); return null; }
+            return res.json();
+        })
+        .then(function () {
+            modalOverlay.classList.remove('is-open');
+            idParaExcluir = null;
+            carregarProjetos();
+        })
+        .catch(function () {
+            alert('Erro ao excluir projeto. Tente novamente.');
+        })
+        .finally(function () {
+            modalConfirmar.disabled = false;
+            modalConfirmar.textContent = 'Excluir';
+        });
+    });
+
+    // ---- HELPERS ----
+    function mostrarStatus(msg, ok) {
+        formStatus.textContent = msg;
+        formStatus.className = 'form-status ' + (ok ? 'ok' : 'err');
+        if (ok) setTimeout(function () { formStatus.textContent = ''; }, 4000);
+    }
+
+    function expirado() {
+        localStorage.removeItem('edm_token');
+        token = null;
+        loginScreen.style.display = 'flex';
+        painel.style.display = 'none';
+        loginErro.textContent = 'Sessão expirada. Faça login novamente.';
+        loginErro.style.display = 'block';
+    }
+
+}());
+</script>
+</body>
+</html>
