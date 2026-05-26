@@ -49,8 +49,19 @@
 
         // Fecha ao clicar em qualquer link interno
         mainNav.querySelectorAll('a').forEach(function (link) {
-            link.addEventListener('click', function () {
-                if (mainNav.classList.contains('is-open')) fecharMenu();
+            link.addEventListener('click', function (e) {
+                if (!mainNav.classList.contains('is-open')) return;
+                var href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    fecharMenu();
+                    setTimeout(function () {
+                        var alvo = document.querySelector(href);
+                        if (alvo) alvo.scrollIntoView({ behavior: 'smooth' });
+                    }, 300);
+                } else {
+                    fecharMenu();
+                }
             });
         });
 
