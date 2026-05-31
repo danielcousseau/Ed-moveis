@@ -38,6 +38,10 @@
     function atualizarBotaoPinterest(filtro) {
         var hint = document.getElementById('pinterest-hint');
         if (!hint) return;
+        if (filtro === 'all') {
+            hint.hidden = true;
+            return;
+        }
         var link = hint.querySelector('.pinterest-link');
         link.href = PINTEREST[filtro] || PINTEREST['all'];
         link.querySelector('.pinterest-label').textContent = LABELS[filtro] || 'Móveis';
@@ -176,7 +180,6 @@
 
     function iniciarGaleria() {
         iniciarFiltros();
-        atualizarBotaoPinterest('all');
         iniciarLightbox();
 
         // Busca projetos da API

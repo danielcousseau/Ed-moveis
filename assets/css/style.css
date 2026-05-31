@@ -761,39 +761,6 @@ p { color: var(--gray-700); }
 }
 .gallery-item:hover .gallery-img img { transform: scale(1.08); }
 
-.gallery-info {
-    padding: 1.25rem 1.4rem 1.5rem;
-}
-.gallery-info .tag {
-    display: inline-block;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold-deep);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-.gallery-info h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.4rem;
-}
-.gallery-info p {
-    font-size: 0.92rem;
-    color: var(--gray-500);
-}
-.card-pinterest {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    margin-top: 0.85rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #e60023;
-    opacity: 0.75;
-    transition: opacity 0.2s;
-}
-.card-pinterest:hover { opacity: 1; }
-
 
 /* ---------- 10. ANTES & DEPOIS ---------- */
 
@@ -901,6 +868,14 @@ p { color: var(--gray-700); }
 /* ---------- 11. VÍDEOS ---------- */
 
 .section-videos { background: var(--paper); }
+
+.video-em-breve {
+    text-align: center;
+    color: var(--gray-500);
+    font-size: 0.95rem;
+    padding: 2rem 0 0;
+}
+.video-em-breve a { color: var(--gold-deep); font-weight: 600; }
 
 .video-grid {
     display: grid;
@@ -1355,10 +1330,6 @@ p { color: var(--gray-700); }
         grid-template-columns: 1fr 1fr;
         gap: 0.875rem;
     }
-    .gallery-info { padding: 0.875rem 1rem 1rem; }
-    .gallery-info h3 { font-size: 0.95rem; }
-    .gallery-info p { font-size: 0.82rem; }
-
     /* ---- Filtros ---- */
     .filters { gap: 0.35rem; flex-wrap: wrap; }
     .filter-btn { padding: 0.5rem 0.85rem; font-size: 0.78rem; }

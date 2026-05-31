@@ -360,60 +360,14 @@
                 </p>
             </header>
 
-            <div class="video-grid">
-
-                <!-- Cards de vídeo. Clique abre o iframe do YouTube. -->
-                <article class="video-card reveal" data-video-id="dQw4w9WgXcQ">
-                    <div class="video-thumb">
-                        <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=700&q=80&auto=format&fit=crop"
-                             alt="Vídeo: montagem de cozinha sob medida" loading="lazy">
-                        <button class="play-btn" aria-label="Reproduzir vídeo de montagem">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="video-info">
-                        <span class="tag">Montagem</span>
-                        <h3>Montagem de cozinha em 90 segundos</h3>
-                        <p>Time-lapse da instalação completa de uma cozinha sob medida.</p>
-                    </div>
-                </article>
-
-                <article class="video-card reveal" data-video-id="dQw4w9WgXcQ">
-                    <div class="video-thumb">
-                        <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=700&q=80&auto=format&fit=crop"
-                             alt="Vídeo: detalhes de acabamento" loading="lazy">
-                        <button class="play-btn" aria-label="Reproduzir vídeo de acabamento">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="video-info">
-                        <span class="tag">Acabamento</span>
-                        <h3>O segredo do acabamento perfeito</h3>
-                        <p>Fita de borda, lixamento e ajuste fino — o que faz a diferença.</p>
-                    </div>
-                </article>
-
-                <article class="video-card reveal" data-video-id="dQw4w9WgXcQ">
-                    <div class="video-thumb">
-                        <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=700&q=80&auto=format&fit=crop"
-                             alt="Vídeo: projeto finalizado" loading="lazy">
-                        <button class="play-btn" aria-label="Reproduzir vídeo de projeto finalizado">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="video-info">
-                        <span class="tag">Projeto pronto</span>
-                        <h3>Tour pelo dormitório finalizado</h3>
-                        <p>Walkthrough de uma suíte master entregue em 2024.</p>
-                    </div>
-                </article>
+            <div class="video-grid" id="videoGrid">
+                <!-- Cards adicionados via assets/js/videos.js -->
             </div>
+
+            <p id="videoEmBreve" class="video-em-breve reveal">
+                Em breve novos vídeos por aqui. Enquanto isso, acompanhe nossa rotina no
+                <a href="https://instagram.com/ed_moveis9" target="_blank" rel="noopener">Instagram @ed_moveis9</a>.
+            </p>
         </div>
     </section>
 
@@ -644,7 +598,7 @@
                             Instagram: @ed_moveis9
                         </a>
                     </li>
-                    <li>contato@edmoveis.com.br</li>
+                    <li><a href="mailto:contato@edmoveis.com.br">contato@edmoveis.com.br</a></li>
                 </ul>
             </div>
 

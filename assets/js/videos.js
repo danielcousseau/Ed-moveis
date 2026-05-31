@@ -11,9 +11,13 @@
     function iniciarVideos() {
         const modal      = document.getElementById('videoModal');
         const frame      = document.getElementById('videoFrame');
-        const videoCards = document.querySelectorAll('.video-card');
+        const videoCards  = document.querySelectorAll('.video-card');
+        const emBreve     = document.getElementById('videoEmBreve');
 
         if (!modal || !frame) return;
+
+        // Mostra a mensagem "em breve" se não houver cards de vídeo
+        if (emBreve) emBreve.hidden = videoCards.length > 0;
 
         // --- Funções de estado do modal ---
 
