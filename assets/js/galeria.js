@@ -88,6 +88,27 @@
         }
 
         container.innerHTML = itens.map(criarItemGaleria).join('');
+
+        // IntersectionObserver roda antes do fetch completar, então observamos manualmente
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+            container.querySelectorAll('.reveal').forEach(function (el) {
+                observer.observe(el);
+            });
+        } else {
+            container.querySelectorAll('.reveal').forEach(function (el) {
+                el.classList.add('is-visible');
+            });
+        }
+
         if (filtroAtivo !== 'all') aplicarFiltro(filtroAtivo);
     }
 
